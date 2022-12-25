@@ -8,7 +8,7 @@ const DestinationSearch = props => {
 
   return (
     <li className="sub-div">
-      <img className="image" src={imgUrl} alt="places" />
+      <img className="image" src={imgUrl} alt={name} />
       <h1 className="heading">{name}</h1>
     </li>
   )
