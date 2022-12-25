@@ -74,15 +74,24 @@ const destinationsList = [
 class App extends Component {
   state = {searchInput: ''}
 
+  getTheSearchValue = event => {
+    this.setState({searchInput: event.target.value})
+  }
+
   render() {
     const {searchInput} = this.state
+    console.log(searchInput)
+
+    const searchResults = destinationsList.filter(eachUser =>
+      eachUser.name.includes(searchInput),
+    )
 
     return (
       <div className="main-div">
         <h1>Destination Search</h1>
-        <input type="search" />
+        <input onChange={this.getTheSearchValue} type="search" />
         <ul className="ul-div">
-          {destinationsList.map(eachItem => (
+          {searchResults.map(eachItem => (
             <DestinationSearch userDetails={eachItem} key={eachItem.id} />
           ))}
         </ul>
